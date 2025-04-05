@@ -10,10 +10,10 @@
 
     <!-- Navigation Links -->
     <ul id="menu" class="hidden md:flex space-x-8 text-lg font-medium transition-all duration-300">
-        <li><a href="#" class="hover:text-gray-500 transition duration-300">Home</a></li>
-        <li><a href="#" class="hover:text-gray-500 transition duration-300">About</a></li>
-        <li><a href="#" class="hover:text-gray-500 transition duration-300">Services</a></li>
-        <li><a href="#" class="hover:text-gray-500 transition duration-300">Contact</a></li>
+        <li><a href="{{route('front.index')}}" class="hover:text-gray-500 transition duration-300">Home</a></li>
+        <li><a href="{{route('front.about')}}" class="hover:text-gray-500 transition duration-300">About</a></li>
+        <li><a href="{{route('front.service')}}" class="hover:text-gray-500 transition duration-300">Services</a></li>
+        <li><a href="{{route('front.contact')}}" class="hover:text-gray-500 transition duration-300">Contact</a></li>
     </ul>
 
     <!-- Sign Up Button -->
@@ -25,10 +25,10 @@
 <!-- Mobile Menu -->
 <div id="mobile-menu" class="hidden fixed top-16 left-0 w-full bg-white shadow-lg p-5 rounded-b-lg transition-all duration-300 md:hidden">
     <ul class="flex flex-col space-y-4 text-lg font-medium">
-        <li><a href="#" class="hover:text-gray-500 transition duration-300">Home</a></li>
-        <li><a href="#" class="hover:text-gray-500 transition duration-300">About</a></li>
-        <li><a href="#" class="hover:text-gray-500 transition duration-300">Services</a></li>
-        <li><a href="#" class="hover:text-gray-500 transition duration-300">Contact</a></li>
+        <li><a href="{{route('front.index')}}" class="hover:text-gray-500 transition duration-300">Home</a></li>
+        <li><a href="{{route('front.about')}}" class="hover:text-gray-500 transition duration-300">About</a></li>
+        <li><a href="{{route('front.service')}}" class="hover:text-gray-500 transition duration-300">Services</a></li>
+        <li><a href="{{route('front.contact')}}" class="hover:text-gray-500 transition duration-300">Contact</a></li>
     </ul>
 </div>
 

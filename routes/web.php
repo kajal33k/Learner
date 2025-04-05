@@ -30,7 +30,9 @@ require __DIR__.'/auth.php';
 
 // Frontend Routes
 Route::get('/', [HomeController::class, 'index'])->name('front.index');
-
+Route::get('/about', [HomeController::class, 'about'])->name('front.about');
+Route::get('/service', [HomeController::class, 'service'])->name('front.service');
+Route::get('/contact', [HomeController::class, 'contact'])->name('front.contact');
 
 // BACKEND ROUTES
 
