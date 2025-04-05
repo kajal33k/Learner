@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\FeatureController;
 use App\Http\Controllers\GridController;
@@ -64,3 +65,11 @@ Route::post('backend/service/store', [ServiceController::class, 'store'])->name(
 Route::get('/backend/service/edit{service}', [ServiceController::class, 'edit'])->name('backend.service.edit');
 Route::post('backend/service/{id}', [ServiceController::class, 'update'])->name('backend.service.update');
 Route::get('/backend/service/{service}', [ServiceController::class, 'destroy'])->name('backend.service.destroy');
+
+// ------------------------------About----------------------------
+Route::get('/backend/about/index', [AboutController::class, 'index'])->name('backend.about.index');
+Route::get('/backend/about/create', [AboutController::class, 'create'])->name('backend.about.create');
+Route::post('/backend/about/store', [AboutController::class, 'store'])->name('backend.about.store');
+Route::get('/backend/about/edit{about}', [AboutController::class, 'edit'])->name('backend.about.edit');
+Route::post('/backend/about/{id}', [AboutController::class, 'update'])->name('backend.about.update');
+Route::get('/backend/about/{about}', [AboutController::class, 'destroy'])->name('backend.about.destroy');

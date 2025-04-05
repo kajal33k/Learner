@@ -1,38 +1,78 @@
-@extends('layouts.app')
+<x-layouts.app :title="__('Edit Banner')">
+    <div class="relative w-full h-44 flex items-center justify-center">
+        <!-- Background Image -->
+        <img src="https://cdn.pixabay.com/photo/2022/04/18/16/00/art-7140878_1280.png" 
+             alt="Background Image" class="absolute inset-0 w-full h-full object-cover">
+        
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div> 
+        
+        <!-- Title -->
+        <h1 class="relative text-white text-4xl font-extrabold drop-shadow-lg">Edit Banner</h1>
+    </div>
 
-@section('content')
-<div class="max-w-2xl mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Edit Service</h1>
+    <!-- Form Card -->
+    <div class="max-w-3xl mx-auto mt-8 bg-black p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-white800 mb-4">Update Banner</h2>
 
-    <form action="{{ route('services.update', $service) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
-        @csrf
-        @method('PUT')
+        <!-- Validation Errors -->
+        @if ($errors->any())
+            <div class="mb-4 p-4 bg-red-100 text-red-600 rounded-lg">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>⚠️ {{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-        <div>
-            <label class="block text-sm font-medium">Title</label>
-            <input type="text" name="title" class="w-full border rounded p-2" value="{{ old('title', $service->title) }}" required>
-            @error('title') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
-        </div>
+        <!-- Edit Form -->
+        <form action="{{ route('backend.banner.update', $banner->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+           
 
-        <div>
-            <label class="block text-sm font-medium">Description</label>
-            <textarea name="description" class="w-full border rounded p-2" rows="4" required>{{ old('description', $service->description) }}</textarea>
-            @error('description') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
-        </div>
+            <!-- Title -->
+            <div class="mb-4">
+                <label for="title" class="block text-white font-semibold">Title:</label>
+                <input type="text" id="title" name="title" value="{{ old('title', $banner->title) }}" 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300" required>
+            </div>
 
-        <div>
-            <label class="block text-sm font-medium">Image</label>
-            <input type="file" name="image" class="w-full">
-            @if($service->image)
-                <img src="{{ asset('storage/' . $service->image) }}" class="mt-2 w-32 h-32 object-cover rounded" alt="Service Image">
-            @endif
-            @error('image') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
-        </div>
+            <!-- Description -->
+            <div class="mb-4">
+                <label for="description" class="block text-white font-semibold">Description:</label>
+                <textarea id="description" name="description" rows="4" 
+                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300" required>{{ old('description', $banner->description) }}</textarea>
+            </div>
 
-        <div>
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update</button>
-            <a href="{{ route('services.index') }}" class="ml-2 text-gray-700 hover:underline">Cancel</a>
-        </div>
-    </form>
-</div>
-@endsection
+            <!-- Image Preview -->
+            <div class="mb-4">
+                <label class="block text-white font-semibold">Current Image:</label>
+                @if($banner->image)
+                    <img src="{{ asset('storage/' . $banner->image) }}" class="h-32 w-32 object-cover rounded-md border border-gray-300 mt-2">
+                @else
+                    <p class="text-gray-500 mt-2">No image uploaded.</p>
+                @endif
+            </div>
+
+            <!-- Image Upload -->
+            <div class="mb-4">
+                <label for="image" class="block text-white font-semibold">Upload New Image (Optional):</label>
+                <input type="file" id="image" name="image" 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300">
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex justify-between mt-6">
+                <a href="{{ route('backend.banner.index') }}" 
+                   class="px-6 py-3 bg-green-800 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-green-700 transition-all">
+                    ⬅️ Back
+                </a>
+                <button type="submit" 
+                        class="px-6 py-3 bg-gradient-to-r from-gray-500 to-red-600 text-white text-lg font-semibold rounded-lg shadow-md hover:from-red-600 hover:to-gray-500 transition-all">
+                    💾 Update Banner
+                </button>
+            </div>
+        </form>
+    </div>
+</x-layouts.app>

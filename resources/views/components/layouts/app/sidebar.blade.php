@@ -56,6 +56,24 @@
                             </a>
                         </li>
 
+                        <li>
+                            <a href="{{route('backend.service.index')}}" class="flex items-center font-bold text-gray-50 hover:text-primary-600 transition duration-200">
+                                <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l1.5-1.5m0 0L12 3m8.5 5.5L21 10m-18 0v10a2 2 0 002 2h14a2 2 0 002-2V10m-18 0l9-7 9 7" />
+                                </svg>
+                                Service
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('backend.about.index')}}" class="flex items-center font-bold text-gray-50 hover:text-primary-600 transition duration-200">
+                                <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l1.5-1.5m0 0L12 3m8.5 5.5L21 10m-18 0v10a2 2 0 002 2h14a2 2 0 002-2V10m-18 0l9-7 9 7" />
+                                </svg>
+                                About
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
             </nav>
