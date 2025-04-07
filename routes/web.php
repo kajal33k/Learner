@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\FeatureController;
 use App\Http\Controllers\GridController;
@@ -23,10 +24,23 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
     Volt::route('settings/password', 'settings.password')->name('settings.password');
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+
 });
 
 require __DIR__.'/auth.php';
 
+// Admin Routes
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::middleware('auth:admin')->group(function () {
+        Route::get('/dashboard', function () {
+            return view('admin.dashboard');
+        })->name('dashboard');
+    });
+});
 
 // Frontend Routes
 Route::get('/', [HomeController::class, 'index'])->name('front.index');
